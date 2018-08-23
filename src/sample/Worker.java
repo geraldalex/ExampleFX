@@ -7,6 +7,7 @@ public class Worker {
     private Double payment;
 
     Worker(int ID, String name, String surname, double payment){
+        
         this.ID = ID;
         this.name = name;
         this.surname = surname;
@@ -43,5 +44,13 @@ public class Worker {
 
     public void setPayment(Double payment) {
         this.payment = payment;
+    }
+
+    @Override
+    public String toString() {
+        return "ID=" + ID +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", payment=" + payment + '\n';
     }
 }

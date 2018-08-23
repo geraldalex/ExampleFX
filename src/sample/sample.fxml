@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -9,13 +10,16 @@
    <children>
       <AnchorPane maxHeight="400.0" maxWidth="600.0" prefHeight="410.0" prefWidth="600.0">
          <children>
-            <TextField fx:id="fieldName" layoutX="85.0" layoutY="23.0" prefHeight="25.0" prefWidth="87.0" promptText="Name" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="428.0" AnchorPane.topAnchor="23.0" />
-            <Button layoutX="235.0" layoutY="94.0" mnemonicParsing="false" onAction="#onAdd" text="Add" AnchorPane.topAnchor="94.0" />
-            <Button layoutX="318.0" layoutY="94.0" mnemonicParsing="false" text="Remove" />
-            <TextField fx:id="fieldSurname" layoutX="198.0" layoutY="23.0" promptText="Surname" />
             <TextField fx:id="fieldID" layoutX="19.0" layoutY="23.0" prefHeight="25.0" prefWidth="44.0" promptText="ID" />
+            <TextField fx:id="fieldName" layoutX="85.0" layoutY="23.0" prefHeight="25.0" prefWidth="87.0" promptText="Name" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="428.0" AnchorPane.topAnchor="23.0" />
+            <TextField fx:id="fieldSurname" layoutX="198.0" layoutY="23.0" promptText="Surname" />
             <TextField fx:id="fieldPayment" layoutX="372.0" layoutY="23.0" promptText="Payment" />
-            <TextField fx:id="fieldSuccess" layoutX="226.0" layoutY="149.0" promptText="Success" />
+            <Button layoutX="153.0" layoutY="94.0" mnemonicParsing="false" onAction="#onAdd" text="Add" AnchorPane.topAnchor="94.0" />
+            <Button layoutX="214.0" layoutY="94.0" mnemonicParsing="false" text="Remove" />
+            <TextField fx:id="fieldSuccess" layoutX="223.0" layoutY="149.0" promptText="Success" AnchorPane.bottomAnchor="220.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
+            <ListView fx:id="listView" layoutY="186.0" prefHeight="200.0" prefWidth="600.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" />
+            <Button layoutX="300.0" layoutY="94.0" mnemonicParsing="false" onAction="#pushToFile" text="Push" />
+            <Button layoutX="372.0" layoutY="94.0" mnemonicParsing="false" onAction="#removeAll" text="RemoveAll" />
          </children>
       </AnchorPane>
    </children>
