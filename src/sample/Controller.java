@@ -12,6 +12,8 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 import static java.nio.file.StandardOpenOption.APPEND;
 import static java.nio.file.StandardOpenOption.CREATE;
@@ -35,6 +37,7 @@ public class Controller {
     private Database database = new Database();
     private ObservableList<String> items = FXCollections.observableArrayList();
     private int curArraySize = database.getAll().size();
+    private ArrayList<Integer> IDs = new ArrayList<>();
 
     public Controller() {
     }
@@ -45,10 +48,13 @@ public class Controller {
                 int ID = Integer.parseInt(fieldID.getText());
                 if (ID <= 0) throw new ArrayIndexOutOfBoundsException("ID is forbidden");
                 if (!database.isFreeID(ID))
-                    throw new IllegalArgumentException("ID is not free!!!");  // checking if ID is unique
+                    throw new IllegalArgumentException();  // checking if ID is unique
+                IDs.add(ID);
                 String name = fieldName.getText();
                 String surname = fieldSurname.getText();
+                Exception wrongPaymentException = new Exception();
                 double payment = Double.parseDouble(fieldPayment.getText());
+                if (payment <= 0) throw wrongPaymentException;
                 database.add(new Worker(ID, name, surname, payment));  // adding new item
                 fieldSuccess.setText("Successful");
                 fieldID.clear();  // clear fields after adding item
@@ -62,6 +68,8 @@ public class Controller {
             fieldSuccess.setText("Illegal input format!!!");
         } catch (IllegalArgumentException ex) {
             fieldSuccess.setText("ID is not free");
+        } catch (Exception e) {
+            fieldSuccess.setText("Wrong payment");
         }
         displayAll();
     }
@@ -75,10 +83,11 @@ public class Controller {
     }
 
     public void pushToFile() {
-        Path file = Paths.get("./somefile.txt");
+        Path file = Paths.get("./newFile.txt");
         byte[] str;
         try {
             OutputStream out = new BufferedOutputStream(Files.newOutputStream(file, CREATE, APPEND));
+
             for (Worker worker : database.getAll()) {
                 str = (worker.getID() + "  " + worker.getName() + "  " + worker.getSurname() + "  " + worker.getPayment() + "\n").getBytes();
                 out.write(str, 0, str.length);
@@ -87,6 +96,8 @@ public class Controller {
         } catch (IOException ex) {
             System.err.println(ex);
         }
+        database.removeAll();
+        displayAll();
     }
 
 
