@@ -74,6 +74,24 @@ public class Controller {
         displayAll();
     }
 
+    public void onRemove() {
+       if(!fieldID.getText().isEmpty()) {
+            int ID = Integer.parseInt(fieldID.getText());
+            for (Worker worker : database.getAll()) {
+                if (worker.getID() == ID) {
+                    database.remove(worker);
+                    displayAll();
+                    return;
+                }
+                return;
+
+            }
+
+        }else{
+            System.out.println("Id Empty!");
+        }
+    }
+
     public void displayAll() {
         listView.getItems().clear();
         for (Worker worker : database.getAll()) {
@@ -106,4 +124,9 @@ public class Controller {
         displayAll();
     }
 
-}
+
+        }
+
+
+
+

@@ -15,7 +15,7 @@
             <TextField fx:id="fieldSurname" layoutX="198.0" layoutY="23.0" promptText="Surname" />
             <TextField fx:id="fieldPayment" layoutX="372.0" layoutY="23.0" promptText="Payment" />
             <Button layoutX="153.0" layoutY="94.0" mnemonicParsing="false" onAction="#onAdd" text="Add" AnchorPane.topAnchor="94.0" />
-            <Button layoutX="214.0" layoutY="94.0" mnemonicParsing="false" text="Remove" />
+            <Button layoutX="214.0" layoutY="94.0" mnemonicParsing="false" onAction="#onRemove" text="Remove" />
             <TextField fx:id="fieldSuccess" layoutX="223.0" layoutY="149.0" promptText="Success" AnchorPane.bottomAnchor="220.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
             <ListView fx:id="listView" layoutY="186.0" prefHeight="200.0" prefWidth="600.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" />
             <Button layoutX="300.0" layoutY="94.0" mnemonicParsing="false" onAction="#pushToFile" text="Push" />
